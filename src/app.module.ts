@@ -3,21 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { VideoGamesModule } from './videogames/videogames.module';
+import { AppDataSource } from './data-source';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'user',
-      password: 'password',
-      database: 'videogames',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // set to false in production
-    }),
-    VideoGamesModule,
-  ],
+  imports: [TypeOrmModule.forRoot(AppDataSource.options), VideoGamesModule],
   controllers: [AppController],
   providers: [AppService],
 })

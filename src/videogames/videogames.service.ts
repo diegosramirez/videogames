@@ -23,12 +23,15 @@ export class VideoGamesService {
   create(createVideoGameDto: CreateVideoGameDto): Promise<VideoGame> {
     const newVideoGame = this.videoGamesRepository.create({
       ...createVideoGameDto,
-      releaseDate: new Date(createVideoGameDto.releaseDate)
+      releaseDate: new Date(createVideoGameDto.releaseDate),
     });
     return this.videoGamesRepository.save(newVideoGame);
   }
 
-  async update(id: number, updateVideoGameDto: UpdateVideoGameDto): Promise<VideoGame> {
+  async update(
+    id: number,
+    updateVideoGameDto: UpdateVideoGameDto,
+  ): Promise<VideoGame> {
     await this.videoGamesRepository.update(id, updateVideoGameDto);
     return this.videoGamesRepository.findOne({ where: { id } });
   }

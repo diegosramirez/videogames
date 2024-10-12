@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { VideoGamesService } from './videogames.service';
 import { VideoGame } from './videogame.entity';
 import { CreateVideoGameDto } from './dto/create-videogame.dto';
@@ -24,7 +32,10 @@ export class VideoGamesController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateVideoGameDto: UpdateVideoGameDto): Promise<VideoGame> {
+  update(
+    @Param('id') id: string,
+    @Body() updateVideoGameDto: UpdateVideoGameDto,
+  ): Promise<VideoGame> {
     return this.videoGamesService.update(+id, updateVideoGameDto);
   }
 
