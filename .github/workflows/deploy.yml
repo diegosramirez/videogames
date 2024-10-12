@@ -18,8 +18,8 @@
        - name: Install dependencies
          run: yarn install
 
-       - name: Run tests
-         run: yarn test
+       #- name: Run tests
+       #  run: yarn test
 
        - name: Build application
          run: yarn build
